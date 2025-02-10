@@ -1,0 +1,253 @@
+/* Color Tokens Light Theme */
+:root,
+:root[data-theme='light'] {
+  --qbuildr-elements-borderColor: theme('colors.alpha.gray.10');
+  --qbuildr-elements-borderColorActive: theme('colors.accent.600');
+
+  --qbuildr-elements-bg-depth-1: theme('colors.white');
+  --qbuildr-elements-bg-depth-2: theme('colors.gray.50');
+  --qbuildr-elements-bg-depth-3: theme('colors.gray.200');
+  --qbuildr-elements-bg-depth-4: theme('colors.alpha.gray.5');
+
+  --qbuildr-elements-textPrimary: theme('colors.gray.950');
+  --qbuildr-elements-textSecondary: theme('colors.gray.600');
+  --qbuildr-elements-textTertiary: theme('colors.gray.500');
+
+  --qbuildr-elements-code-background: theme('colors.gray.100');
+  --qbuildr-elements-code-text: theme('colors.gray.950');
+
+  --qbuildr-elements-button-primary-background: theme('colors.alpha.accent.10');
+  --qbuildr-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
+  --qbuildr-elements-button-primary-text: theme('colors.accent.500');
+
+  --qbuildr-elements-button-secondary-background: theme('colors.alpha.gray.5');
+  --qbuildr-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
+  --qbuildr-elements-button-secondary-text: theme('colors.gray.950');
+
+  --qbuildr-elements-button-danger-background: theme('colors.alpha.red.10');
+  --qbuildr-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --qbuildr-elements-button-danger-text: theme('colors.red.500');
+
+  --qbuildr-elements-item-contentDefault: theme('colors.alpha.gray.50');
+  --qbuildr-elements-item-contentActive: theme('colors.gray.950');
+  --qbuildr-elements-item-contentAccent: theme('colors.accent.700');
+  --qbuildr-elements-item-contentDanger: theme('colors.red.500');
+  --qbuildr-elements-item-backgroundDefault: rgba(0, 0, 0, 0);
+  --qbuildr-elements-item-backgroundActive: theme('colors.alpha.gray.5');
+  --qbuildr-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --qbuildr-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+  --qbuildr-h1-txt: #1e1e1e;
+
+  --qbuildr-elements-loader-background: theme('colors.alpha.gray.10');
+  --qbuildr-elements-loader-progress: theme('colors.accent.500');
+
+  --qbuildr-elements-artifacts-background: theme('colors.white');
+  --qbuildr-elements-artifacts-backgroundHover: theme('colors.alpha.gray.2');
+  --qbuildr-elements-artifacts-borderColor: var(--qbuildr-elements-borderColor);
+  --qbuildr-elements-artifacts-inlineCode-background: theme('colors.gray.100');
+  --qbuildr-elements-artifacts-inlineCode-text: var(--qbuildr-elements-textPrimary);
+
+  --qbuildr-elements-actions-background: theme('colors.white');
+  --qbuildr-elements-actions-code-background: theme('colors.gray.800');
+
+  --qbuildr-elements-messages-background: theme('colors.gray.100');
+  --qbuildr-elements-messages-linkColor: theme('colors.accent.500');
+  --qbuildr-elements-messages-code-background: theme('colors.gray.800');
+  --qbuildr-elements-messages-inlineCode-background: theme('colors.gray.200');
+  --qbuildr-elements-messages-inlineCode-text: theme('colors.gray.800');
+
+  --qbuildr-elements-icon-success: theme('colors.green.500');
+  --qbuildr-elements-icon-error: theme('colors.red.500');
+  --qbuildr-elements-icon-primary: theme('colors.gray.950');
+  --qbuildr-elements-icon-secondary: theme('colors.gray.600');
+  --qbuildr-elements-icon-tertiary: theme('colors.gray.500');
+
+  --qbuildr-elements-dividerColor: theme('colors.gray.100');
+
+  --qbuildr-elements-prompt-background: theme('colors.alpha.white.80');
+
+  --qbuildr-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.10');
+  --qbuildr-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --qbuildr-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --qbuildr-elements-sidebar-buttonText: theme('colors.accent.700');
+
+  --qbuildr-elements-preview-addressBar-background: theme('colors.gray.100');
+  --qbuildr-elements-preview-addressBar-backgroundHover: theme('colors.alpha.gray.5');
+  --qbuildr-elements-preview-addressBar-backgroundActive: theme('colors.white');
+  --qbuildr-elements-preview-addressBar-text: var(--qbuildr-elements-textSecondary);
+  --qbuildr-elements-preview-addressBar-textActive: var(--qbuildr-elements-textPrimary);
+
+  --qbuildr-elements-terminals-background: theme('colors.white');
+  --qbuildr-elements-terminals-buttonBackground: var(--qbuildr-elements-bg-depth-4);
+
+  --qbuildr-elements-cta-background: theme('colors.gray.100');
+  --qbuildr-elements-cta-text: theme('colors.gray.950');
+
+  /* Terminal Colors */
+  --qbuildr-terminal-background: var(--qbuildr-elements-terminals-background);
+  --qbuildr-terminal-foreground: #333333;
+  --qbuildr-terminal-selection-background: #00000040;
+  --qbuildr-terminal-black: #000000;
+  --qbuildr-terminal-red: #cd3131;
+  --qbuildr-terminal-green: #00bc00;
+  --qbuildr-terminal-yellow: #949800;
+  --qbuildr-terminal-blue: #0451a5;
+  --qbuildr-terminal-magenta: #bc05bc;
+  --qbuildr-terminal-cyan: #0598bc;
+  --qbuildr-terminal-white: #555555;
+  --qbuildr-terminal-brightBlack: #686868;
+  --qbuildr-terminal-brightRed: #cd3131;
+  --qbuildr-terminal-brightGreen: #00bc00;
+  --qbuildr-terminal-brightYellow: #949800;
+  --qbuildr-terminal-brightBlue: #0451a5;
+  --qbuildr-terminal-brightMagenta: #bc05bc;
+  --qbuildr-terminal-brightCyan: #0598bc;
+  --qbuildr-terminal-brightWhite: #a5a5a5;
+}
+
+/* Color Tokens Dark Theme */
+:root,
+:root[data-theme='dark'] {
+  --qbuildr-elements-borderColor: theme('colors.alpha.white.10');
+  --qbuildr-elements-borderColorActive: theme('colors.accent.500');
+
+  --qbuildr-elements-bg-depth-1: theme('colors.gray.950');
+  --qbuildr-elements-bg-depth-2: theme('colors.gray.900');
+  --qbuildr-elements-bg-depth-3: theme('colors.gray.800');
+  --qbuildr-elements-bg-depth-4: theme('colors.alpha.white.5');
+
+  --qbuildr-elements-textPrimary: theme('colors.white');
+  --qbuildr-elements-textSecondary: theme('colors.gray.400');
+  --qbuildr-elements-textTertiary: theme('colors.gray.500');
+
+  --qbuildr-elements-code-background: theme('colors.gray.800');
+  --qbuildr-elements-code-text: theme('colors.white');
+
+  --qbuildr-elements-button-primary-background: theme('colors.alpha.accent.10');
+  --qbuildr-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
+  --qbuildr-elements-button-primary-text: theme('colors.accent.500');
+
+  --qbuildr-elements-button-secondary-background: theme('colors.alpha.white.5');
+  --qbuildr-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
+  --qbuildr-elements-button-secondary-text: theme('colors.white');
+
+  --qbuildr-elements-button-danger-background: theme('colors.alpha.red.10');
+  --qbuildr-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --qbuildr-elements-button-danger-text: theme('colors.red.500');
+  --qbuildr-h1-txt: #f1f1f1;
+
+  --qbuildr-elements-item-contentDefault: theme('colors.alpha.white.50');
+  --qbuildr-elements-item-contentActive: theme('colors.white');
+  --qbuildr-elements-item-contentAccent: theme('colors.accent.500');
+  --qbuildr-elements-item-contentDanger: theme('colors.red.500');
+  --qbuildr-elements-item-backgroundDefault: rgba(255, 255, 255, 0);
+  --qbuildr-elements-item-backgroundActive: theme('colors.alpha.white.10');
+  --qbuildr-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --qbuildr-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+
+  --qbuildr-elements-loader-background: theme('colors.alpha.gray.10');
+  --qbuildr-elements-loader-progress: theme('colors.accent.500');
+
+  --qbuildr-elements-artifacts-background: theme('colors.gray.900');
+  --qbuildr-elements-artifacts-backgroundHover: theme('colors.alpha.white.5');
+  --qbuildr-elements-artifacts-borderColor: var(--qbuildr-elements-borderColor);
+  --qbuildr-elements-artifacts-inlineCode-background: theme('colors.gray.800');
+  --qbuildr-elements-artifacts-inlineCode-text: theme('colors.white');
+
+  --qbuildr-elements-actions-background: theme('colors.gray.900');
+  --qbuildr-elements-actions-code-background: theme('colors.gray.800');
+
+  --qbuildr-elements-messages-background: theme('colors.gray.800');
+  --qbuildr-elements-messages-linkColor: theme('colors.accent.500');
+  --qbuildr-elements-messages-code-background: theme('colors.gray.900');
+  --qbuildr-elements-messages-inlineCode-background: theme('colors.gray.700');
+  --qbuildr-elements-messages-inlineCode-text: var(--qbuildr-elements-textPrimary);
+
+  --qbuildr-elements-icon-success: theme('colors.green.400');
+  --qbuildr-elements-icon-error: theme('colors.red.400');
+  --qbuildr-elements-icon-primary: theme('colors.gray.950');
+  --qbuildr-elements-icon-secondary: theme('colors.gray.600');
+  --qbuildr-elements-icon-tertiary: theme('colors.gray.500');
+
+  --qbuildr-elements-dividerColor: theme('colors.gray.100');
+
+  --qbuildr-elements-prompt-background: theme('colors.alpha.gray.80');
+
+  --qbuildr-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.30');
+  --qbuildr-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --qbuildr-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --qbuildr-elements-sidebar-buttonText: theme('colors.accent.500');
+
+  --qbuildr-elements-preview-addressBar-background: var(--qbuildr-elements-bg-depth-1);
+  --qbuildr-elements-preview-addressBar-backgroundHover: theme('colors.alpha.white.5');
+  --qbuildr-elements-preview-addressBar-backgroundActive: var(--qbuildr-elements-bg-depth-1);
+  --qbuildr-elements-preview-addressBar-text: var(--qbuildr-elements-textSecondary);
+  --qbuildr-elements-preview-addressBar-textActive: var(--qbuildr-elements-textPrimary);
+
+  --qbuildr-elements-terminals-background: var(--qbuildr-elements-bg-depth-1);
+  --qbuildr-elements-terminals-buttonBackground: var(--qbuildr-elements-bg-depth-3);
+
+  --qbuildr-elements-cta-background: theme('colors.alpha.white.10');
+  --qbuildr-elements-cta-text: theme('colors.white');
+
+  /* Terminal Colors */
+  --qbuildr-terminal-background: var(--qbuildr-elements-terminals-background);
+  --qbuildr-terminal-foreground: #eff0eb;
+  --qbuildr-terminal-selection-background: #97979b33;
+  --qbuildr-terminal-black: #000000;
+  --qbuildr-terminal-red: #ff5c57;
+  --qbuildr-terminal-green: #5af78e;
+  --qbuildr-terminal-yellow: #f3f99d;
+  --qbuildr-terminal-blue: #57c7ff;
+  --qbuildr-terminal-magenta: #ff6ac1;
+  --qbuildr-terminal-cyan: #9aedfe;
+  --qbuildr-terminal-white: #f1f1f0;
+  --qbuildr-terminal-brightBlack: #686868;
+  --qbuildr-terminal-brightRed: #ff5c57;
+  --qbuildr-terminal-brightGreen: #5af78e;
+  --qbuildr-terminal-brightYellow: #f3f99d;
+  --qbuildr-terminal-brightBlue: #57c7ff;
+  --qbuildr-terminal-brightMagenta: #ff6ac1;
+  --qbuildr-terminal-brightCyan: #9aedfe;
+  --qbuildr-terminal-brightWhite: #f1f1f0;
+}
+
+/*
+ * Element Tokens
+ *
+ * Hierarchy: Element Token -> (Element Token | Color Tokens) -> Primitives
+ */
+:root {
+  --header-height: 54px;
+  --chat-max-width: 37rem;
+  --chat-min-width: 640px;
+  --workbench-width: min(calc(100% - var(--chat-min-width)), 2536px);
+  --workbench-inner-width: var(--workbench-width);
+  --workbench-left: calc(100% - var(--workbench-width));
+
+  /* Toasts */
+  --toastify-color-progress-success: var(--qbuildr-elements-icon-success);
+  --toastify-color-progress-error: var(--qbuildr-elements-icon-error);
+
+  /* Terminal */
+  --qbuildr-elements-terminal-backgroundColor: var(--qbuildr-terminal-background);
+  --qbuildr-elements-terminal-textColor: var(--qbuildr-terminal-foreground);
+  --qbuildr-elements-terminal-cursorColor: var(--qbuildr-terminal-foreground);
+  --qbuildr-elements-terminal-selection-backgroundColor: var(--qbuildr-terminal-selection-background);
+  --qbuildr-elements-terminal-color-black: var(--qbuildr-terminal-black);
+  --qbuildr-elements-terminal-color-red: var(--qbuildr-terminal-red);
+  --qbuildr-elements-terminal-color-green: var(--qbuildr-terminal-green);
+  --qbuildr-elements-terminal-color-yellow: var(--qbuildr-terminal-yellow);
+  --qbuildr-elements-terminal-color-blue: var(--qbuildr-terminal-blue);
+  --qbuildr-elements-terminal-color-magenta: var(--qbuildr-terminal-magenta);
+  --qbuildr-elements-terminal-color-cyan: var(--qbuildr-terminal-cyan);
+  --qbuildr-elements-terminal-color-white: var(--qbuildr-terminal-white);
+  --qbuildr-elements-terminal-color-brightBlack: var(--qbuildr-terminal-brightBlack);
+  --qbuildr-elements-terminal-color-brightRed: var(--qbuildr-terminal-brightRed);
+  --qbuildr-elements-terminal-color-brightGreen: var(--qbuildr-terminal-brightGreen);
+  --qbuildr-elements-terminal-color-brightYellow: var(--qbuildr-terminal-brightYellow);
+  --qbuildr-elements-terminal-color-brightBlue: var(--qbuildr-terminal-brightBlue);
+  --qbuildr-elements-terminal-color-brightMagenta: var(--qbuildr-terminal-brightMagenta);
+  --qbuildr-elements-terminal-color-brightCyan: var(--qbuildr-terminal-brightCyan);
+  --qbuildr-elements-terminal-color-brightWhite: var(--qbuildr-terminal-brightWhite);
+}
