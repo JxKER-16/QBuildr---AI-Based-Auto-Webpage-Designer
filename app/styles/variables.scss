@@ -1,6 +1,12 @@
 /* Color Tokens Light Theme */
 :root,
 :root[data-theme='light'] {
+
+
+  // custom Joshua Values
+  --qbuildr-elements-borderRad: #414141;
+
+
   --qbuildr-elements-borderColor: theme('colors.alpha.gray.10');
   --qbuildr-elements-borderColorActive: theme('colors.accent.600');
 
@@ -108,6 +114,11 @@
 /* Color Tokens Dark Theme */
 :root,
 :root[data-theme='dark'] {
+
+  // custom Joshua Values
+  --qbuildr-elements-borderRad: #ffffff;
+
+
   --qbuildr-elements-borderColor: theme('colors.alpha.white.10');
   --qbuildr-elements-borderColorActive: theme('colors.accent.500');
 
