@@ -298,9 +298,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     };
 
     const baseChat = (
-      <div
+      <div className="">
+        <div
         ref={ref}
-        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
+        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden ')}
         data-chat-visible={showChat}
       >
         <ClientOnly>{() => <Menu />}</ClientOnly>
@@ -308,7 +309,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             
             <div
-              className={classNames('pt-6 px-2 sm:px-6', {
+              className={classNames(' pt-6 px-2  sm:px-6', {
                 'h-full flex flex-col': chatStarted,
               })}
               ref={scrollRef}
@@ -326,7 +327,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 }}
               </ClientOnly>
               <div
-                className={classNames('flex flex-col gap-4 w-full max-w-chat mx-auto z-prompt mb-6', {
+                className={classNames('flex flex-col gap-10 w-full max-w-chat mx-auto z-prompt mb-6', {
                   'sticky bottom-2': chatStarted,
                 })}
               >
@@ -344,18 +345,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 </div>
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
-                  className={classNames(
-                    'bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg border border-white relative w-full max-w-chat mx-auto z-prompt',
-
-                    /*
-                     * {
-                     *   'sticky bottom-2': chatStarted,
-                     * },
-                     */
-                  )}
+                  className="bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg  relative max-w-chat mx-auto z-prompt"
                 >
                   {!chatStarted && (
-              <div id="intro" className="mass relative -top-36 max-w-chat mx-auto text-center px-4 lg:px-0">
+              <div id="intro" className="mass relative -top-30 max-w-chat mx-auto text-center px-4 lg:px-0">
                 <h1 className=" text-xl lg:text-3xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in ">
                   Where ideas begin
                 </h1>
@@ -376,7 +369,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientTransform="rotate(-45)"
                       >
                         <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
+                        <stop offset="60%" stopColor="#b44aff" stopOpacity="80%"></stop>
                         <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
                         <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
                       </linearGradient>
@@ -390,7 +383,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
                     <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
                   </svg>
-                  <div>
+                  <div className='relative top-12'>
                     <ClientOnly>
                       {() => (
                         <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
@@ -409,13 +402,15 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           />
                           </div>
                           {(providerList || []).length > 0 && provider && (
-                            <APIKeyManager
+                            <div className="relative -top-4">
+                              <APIKeyManager
                               provider={provider}
                               apiKey={apiKeys[provider.name] || ''}
                               setApiKey={(key) => {
                                 onApiKeysChange(provider.name, key);
                               }}
                             />
+                            </div>
                           )}
                         </div>
                       )}
@@ -441,7 +436,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   </ClientOnly>
                   <div
                     className={classNames(
-                      'absolute left-8 shadow-xs w-8/9 border border-white backdrop-blur rounded-lg ',
+                      'relative top-20 shadow-xs w-full border --qbuildr-elements-borderRad backdrop-blur rounded-lg ',
                     )}
                   >
                     <textarea
@@ -609,6 +604,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           </div>
           <ClientOnly>{() => <Workbench chatStarted={chatStarted} isStreaming={isStreaming} />}</ClientOnly>
         </div>
+      </div>
       </div>
     );
 

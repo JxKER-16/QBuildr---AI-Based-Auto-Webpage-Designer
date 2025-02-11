@@ -83,14 +83,14 @@ export const ModelSelector = ({
       
       <div className="flex gap-2 flex-wrap">
         {modelLoading === 'all' || modelLoading === provider?.name ? (
-          <div className="px-4 py-2 rounded-lg border border-qbuildr-elements-borderColor bg-qbuildr-elements-prompt-background text-qbuildr-elements-textPrimary">
+          <div className="relative left-25 mt-6 px-4 py-2 rounded-lg border border-qbuildr-elements-borderColor bg-qbuildr-elements-prompt-background text-qbuildr-elements-textPrimary">
             Loading...
           </div>
         ) : (
           <select
             value={model}
             onChange={(e) => setModel?.(e.target.value)}
-            className="px-4 py-2 rounded-lg max-w-54 border border-qbuildr-elements-borderColor bg-qbuildr-elements-prompt-background text-qbuildr-elements-textPrimary hover:border-qbuildr-elements-focus focus:border-qbuildr-elements-focus outline-none"
+            className="relative left-25 mt-6 px-4 py-2  rounded-lg max-w-54 border border-qbuildr-elements-borderColor bg-qbuildr-elements-prompt-background text-qbuildr-elements-textPrimary hover:border-qbuildr-elements-focus focus:border-qbuildr-elements-focus outline-none"
           >
             {modelList
               .filter((e) => e.provider === provider?.name && e.name)
