@@ -298,9 +298,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     };
 
     const baseChat = (
-      <div
+      <div className="">
+        <div
         ref={ref}
-        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
+        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden ')}
         data-chat-visible={showChat}
       >
         <ClientOnly>{() => <Menu />}</ClientOnly>
@@ -344,7 +345,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 </div>
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
-                  className="bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg border-2 relative max-w-chat mx-auto z-prompt --qbuildr-elements-borderRad"
+                  className="bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg  relative max-w-chat mx-auto z-prompt"
                 >
                   {!chatStarted && (
               <div id="intro" className="mass relative -top-30 max-w-chat mx-auto text-center px-4 lg:px-0">
@@ -368,7 +369,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientTransform="rotate(-45)"
                       >
                         <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
+                        <stop offset="60%" stopColor="#b44aff" stopOpacity="80%"></stop>
                         <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
                         <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
                       </linearGradient>
@@ -603,6 +604,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           </div>
           <ClientOnly>{() => <Workbench chatStarted={chatStarted} isStreaming={isStreaming} />}</ClientOnly>
         </div>
+      </div>
       </div>
     );
 

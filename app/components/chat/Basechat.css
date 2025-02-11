@@ -1,3 +1,11 @@
+*{
+    background: var();
+}
+
+.background-change{
+    background-color: var(--bg-whole);
+}
+
 .mass{
     color: var( --qbuildr-h1-txt);
 }
