@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Template } from '~/types/template';
 import { STARTER_TEMPLATES } from '~/utils/constants';
+import './Basechat.css'
 
 interface FrameworkLinkProps {
   template: Template;

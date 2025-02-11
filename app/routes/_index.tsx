@@ -16,7 +16,9 @@ export default function Index() {
     <div className="flex flex-col h-full w-full bg-qbuildr-elements-background-depth-1">
       <BackgroundRays />
       <Header />
-      <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
+      <div className="--qbuildr-elements-bg-depth-1">
+        <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
+        </div>
     </div>
   );
 }
