@@ -298,14 +298,14 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     };
 
     const baseChat = (
-      <div className="">
+      <div className="mbg">
         <div
         ref={ref}
         className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden ')}
         data-chat-visible={showChat}
       >
         <ClientOnly>{() => <Menu />}</ClientOnly>
-        <div ref={scrollRef} className="flex flex-col lg:flex-row overflow-y-auto w-full h-full">
+        <div ref={scrollRef} className="flex flex-col  lg:flex-row overflow-y-auto w-full h-full">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             
             <div
@@ -361,7 +361,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <defs>
                       <linearGradient
                         id="line-gradient"
-                        x1="20%"
+                        x1="500%"
                         y1="0%"
                         x2="-14%"
                         y2="10%"

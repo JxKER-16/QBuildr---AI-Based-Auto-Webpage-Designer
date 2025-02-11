@@ -10,3 +10,7 @@
     color: var( --qbuildr-h1-txt);
 }
 
+.mbg{
+    background-color: var(--qbuildr-elements-bg-depth-1);
+}
+
