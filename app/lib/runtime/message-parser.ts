@@ -1,5 +1,5 @@
-import type { ActionType, qbuildrAction, qbuildrActionData, FileAction, ShellAction } from '~/types/actions';
-import type { qbuildrArtifactData } from '~/types/artifact';
+import type { ActionType, QbuildrAction, QbuildrActionData, FileAction, ShellAction } from '~/types/actions';
+import type { QbuildrArtifactData } from '~/types/artifact';
 import { createScopedLogger } from '~/utils/logger';
 import { unreachable } from '~/utils/unreachable';
 
@@ -10,7 +10,7 @@ const ARTIFACT_ACTION_TAG_CLOSE = '</qbuildrAction>';
 
 const logger = createScopedLogger('MessageParser');
 
-export interface ArtifactCallbackData extends qbuildrArtifactData {
+export interface ArtifactCallbackData extends QbuildrArtifactData {
   messageId: string;
 }
 
@@ -18,7 +18,7 @@ export interface ActionCallbackData {
   artifactId: string;
   messageId: string;
   actionId: string;
-  action: qbuildrAction;
+  action: QbuildrAction;
 }
 
 export type ArtifactCallback = (data: ArtifactCallbackData) => void;
@@ -47,8 +47,8 @@ interface MessageState {
   position: number;
   insideArtifact: boolean;
   insideAction: boolean;
-  currentArtifact?: qbuildrArtifactData;
-  currentAction: qbuildrActionData;
+  currentArtifact?: QbuildrArtifactData;
+  currentAction: QbuildrActionData;
   actionId: number;
 }
 
@@ -133,7 +133,7 @@ export class StreamingMessageParser {
                */
               actionId: String(state.actionId - 1),
 
-              action: currentAction as qbuildrAction,
+              action: currentAction as QbuildrAction,
             });
 
             state.insideAction = false;
@@ -179,7 +179,7 @@ export class StreamingMessageParser {
                 artifactId: currentArtifact.id,
                 messageId,
                 actionId: String(state.actionId++),
-                action: state.currentAction as qbuildrAction,
+                action: state.currentAction as QbuildrAction,
               });
 
               i = actionEndIndex + 1;
@@ -236,7 +236,7 @@ export class StreamingMessageParser {
                 id: artifactId,
                 title: artifactTitle,
                 type,
-              } satisfies qbuildrArtifactData;
+              } satisfies QbuildrArtifactData;
 
               state.currentArtifact = currentArtifact;
 

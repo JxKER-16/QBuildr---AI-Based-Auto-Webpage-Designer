@@ -1,24 +1,24 @@
 import { WebContainer } from '@webcontainer/api';
 import { atom, map, type MapStore } from 'nanostores';
 import * as nodePath from 'node:path';
-import type { ActionAlert, qbuildrAction } from '~/types/actions';
 import { createScopedLogger } from '~/utils/logger';
 import { unreachable } from '~/utils/unreachable';
 import type { ActionCallbackData } from './message-parser';
-import type { qbuildrShell } from '~/utils/shell';
+import type { ActionAlert, QbuildrAction } from '~/types/actions';
+import type { QbuildrShell } from '~/utils/shell';
 
 const logger = createScopedLogger('ActionRunner');
 
 export type ActionStatus = 'pending' | 'running' | 'complete' | 'aborted' | 'failed';
 
-export type BaseActionState = qbuildrAction & {
+export type BaseActionState = QbuildrAction & {
   status: Exclude<ActionStatus, 'failed'>;
   abort: () => void;
   executed: boolean;
   abortSignal: AbortSignal;
 };
 
-export type FailedActionState = qbuildrAction &
+export type FailedActionState = QbuildrAction &
   Omit<BaseActionState, 'status'> & {
     status: Extract<ActionStatus, 'failed'>;
     error: string;
@@ -66,14 +66,14 @@ class ActionCommandError extends Error {
 export class ActionRunner {
   #webcontainer: Promise<WebContainer>;
   #currentExecutionPromise: Promise<void> = Promise.resolve();
-  #shellTerminal: () => qbuildrShell;
+  #shellTerminal: () => QbuildrShell;
   runnerId = atom<string>(`${Date.now()}`);
   actions: ActionsMap = map({});
   onAlert?: (alert: ActionAlert) => void;
 
   constructor(
     webcontainerPromise: Promise<WebContainer>,
-    getShellTerminal: () => qbuildrShell,
+    getShellTerminal: () => QbuildrShell,
     onAlert?: (alert: ActionAlert) => void,
   ) {
     this.#webcontainer = webcontainerPromise;

@@ -17,9 +17,9 @@ export interface StartAction extends BaseAction {
   type: 'start';
 }
 
-export type qbuildrAction = FileAction | ShellAction | StartAction;
+export type QbuildrAction = FileAction | ShellAction | StartAction;
 
-export type qbuildrActionData = qbuildrAction | BaseAction;
+export type QbuildrActionData = QbuildrAction | BaseAction;
 
 export interface ActionAlert {
   type: string;

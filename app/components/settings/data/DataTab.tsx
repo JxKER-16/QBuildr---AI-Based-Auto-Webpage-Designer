@@ -316,7 +316,9 @@ export default function DataTab() {
           <div className="flex flex-col gap-4">
             <div>
               <h4 className="text-qbuildr-elements-textPrimary mb-2">Chat History</h4>
-              <p className="text-sm text-qbuildr-elements-textSecondary mb-4">Export or delete all your chat history.</p>
+              <p className="text-sm text-qbuildr-elements-textSecondary mb-4">
+                Export or delete all your chat history.
+              </p>
               <div className="flex gap-4">
                 <button
                   onClick={handleExportAllChats}

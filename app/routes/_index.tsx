@@ -18,7 +18,7 @@ export default function Index() {
       <Header />
       <div className="--qbuildr-elements-bg-depth-1">
         <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
-        </div>
+      </div>
     </div>
   );
 }

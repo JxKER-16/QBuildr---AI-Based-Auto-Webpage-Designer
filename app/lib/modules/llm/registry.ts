@@ -3,9 +3,4 @@ import GoogleProvider from './providers/google';
 import OpenRouterProvider from './providers/open-router';
 import OpenAIProvider from './providers/openai';
 
-export {
-  AnthropicProvider,
-  GoogleProvider,
-  OpenAIProvider,
-  OpenRouterProvider,
-};
+export { AnthropicProvider, GoogleProvider, OpenAIProvider, OpenRouterProvider };

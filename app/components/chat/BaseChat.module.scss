@@ -46,15 +46,13 @@
   mix-blend-mode: overlay;
 }
 
-
-
 .intro-box {
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
   background: white;
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .model-grid {
@@ -71,6 +69,6 @@
   margin: 2rem auto;
 }
 
-.josh{
-  color: var( --qbuildr-h1-txt);
+.josh {
+  color: var(--qbuildr-h1-txt);
 }

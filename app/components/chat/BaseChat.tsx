@@ -300,311 +300,312 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const baseChat = (
       <div className="mbg">
         <div
-        ref={ref}
-        className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden ')}
-        data-chat-visible={showChat}
-      >
-        <ClientOnly>{() => <Menu />}</ClientOnly>
-        <div ref={scrollRef} className="flex flex-col  lg:flex-row overflow-y-auto w-full h-full">
-          <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
-            
-            <div
-              className={classNames(' pt-6 px-2  sm:px-6', {
-                'h-full flex flex-col': chatStarted,
-              })}
-              ref={scrollRef}
-            >
-              <ClientOnly>
-                {() => {
-                  return chatStarted ? (
-                    <Messages
-                      ref={messageRef}
-                      className="flex flex-col w-full flex-1 max-w-chat pb-6 mx-auto z-1"
-                      messages={messages}
-                      isStreaming={isStreaming}
-                    />
-                  ) : null;
-                }}
-              </ClientOnly>
+          ref={ref}
+          className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden ')}
+          data-chat-visible={showChat}
+        >
+          <ClientOnly>{() => <Menu />}</ClientOnly>
+          <div ref={scrollRef} className="flex flex-col  lg:flex-row overflow-y-auto w-full h-full">
+            <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
               <div
-                className={classNames('flex flex-col gap-10 w-full max-w-chat mx-auto z-prompt mb-6', {
-                  'sticky bottom-2': chatStarted,
+                className={classNames(' pt-6 px-2  sm:px-6', {
+                  'h-full flex flex-col': chatStarted,
                 })}
+                ref={scrollRef}
               >
-                <div className="bg-bolt-elements-background-depth-2">
-                  {actionAlert && (
-                    <ChatAlert
-                      alert={actionAlert}
-                      clearAlert={() => clearAlert?.()}
-                      postMessage={(message) => {
-                        sendMessage?.({} as any, message);
-                        clearAlert?.();
-                      }}
-                    />
-                  )}
-                </div>
-                {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
+                <ClientOnly>
+                  {() => {
+                    return chatStarted ? (
+                      <Messages
+                        ref={messageRef}
+                        className="flex flex-col w-full flex-1 max-w-chat pb-6 mx-auto z-1"
+                        messages={messages}
+                        isStreaming={isStreaming}
+                      />
+                    ) : null;
+                  }}
+                </ClientOnly>
                 <div
-                  className="bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg  relative max-w-chat mx-auto z-prompt"
+                  className={classNames('flex flex-col gap-10 w-full max-w-chat mx-auto z-prompt mb-6', {
+                    'sticky bottom-2': chatStarted,
+                  })}
                 >
-                  {!chatStarted && (
-              <div id="intro" className="mass relative -top-30 max-w-chat mx-auto text-center px-4 lg:px-0">
-                <h1 className=" text-xl lg:text-3xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in ">
-                  Where ideas begin
-                </h1>
-                <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
-                  Bring ideas to life in seconds or get help on existing projects.
-                </p>
-              </div>
-            )}
-                  <svg className={classNames(styles.PromptEffectContainer)}>
-                    <defs>
-                      <linearGradient
-                        id="line-gradient"
-                        x1="500%"
-                        y1="0%"
-                        x2="-14%"
-                        y2="10%"
-                        gradientUnits="userSpaceOnUse"
-                        gradientTransform="rotate(-45)"
-                      >
-                        <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="60%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                      </linearGradient>
-                      <linearGradient id="shine-gradient">
-                        <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="white" stopOpacity="0%"></stop>
-                      </linearGradient>
-                    </defs>
-                    <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
-                    <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
-                  </svg>
-                  <div className='relative top-12'>
-                    <ClientOnly>
-                      {() => (
-                        <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
-                          <div className="relative z-0 -top-5">
-                          <ModelSelector
-                            key={provider?.name + ':' + modelList.length}
-                            model={model}
-                            setModel={setModel}
-                            modelList={modelList}
-                            provider={provider}
-                            setProvider={setProvider}
-                            providerList={providerList || (PROVIDER_LIST as ProviderInfo[])}
-                            apiKeys={apiKeys}
-                            modelLoading={isModelLoading}
-                            
-                          />
-                          </div>
-                          {(providerList || []).length > 0 && provider && (
-                            <div className="relative -top-4">
-                              <APIKeyManager
-                              provider={provider}
-                              apiKey={apiKeys[provider.name] || ''}
-                              setApiKey={(key) => {
-                                onApiKeysChange(provider.name, key);
-                              }}
-                            />
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </ClientOnly>
-                  </div>
-                  <FilePreview
-                    files={uploadedFiles}
-                    imageDataList={imageDataList}
-                    onRemove={(index) => {
-                      setUploadedFiles?.(uploadedFiles.filter((_, i) => i !== index));
-                      setImageDataList?.(imageDataList.filter((_, i) => i !== index));
-                    }}
-                  />
-                  <ClientOnly>
-                    {() => (
-                      <ScreenshotStateManager
-                        setUploadedFiles={setUploadedFiles}
-                        setImageDataList={setImageDataList}
-                        uploadedFiles={uploadedFiles}
-                        imageDataList={imageDataList}
+                  <div className="bg-bolt-elements-background-depth-2">
+                    {actionAlert && (
+                      <ChatAlert
+                        alert={actionAlert}
+                        clearAlert={() => clearAlert?.()}
+                        postMessage={(message) => {
+                          sendMessage?.({} as any, message);
+                          clearAlert?.();
+                        }}
                       />
                     )}
-                  </ClientOnly>
-                  <div
-                    className={classNames(
-                      'relative top-20 shadow-xs w-full border --qbuildr-elements-borderRad backdrop-blur rounded-lg ',
+                  </div>
+                  {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
+                  <div className="bg-bolt-elements-background-depth-2 px-20 py-42  rounded-lg  relative max-w-chat mx-auto z-prompt">
+                    {!chatStarted && (
+                      <div id="intro" className="mass relative -top-30 max-w-chat mx-auto text-center px-4 lg:px-0">
+                        <h1 className=" text-xl lg:text-3xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in ">
+                          Where ideas begin
+                        </h1>
+                        <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                          Bring ideas to life in seconds or get help on existing projects.
+                        </p>
+                      </div>
                     )}
-                  >
-                    <textarea
-                      ref={textareaRef}
-                      className={classNames(
-                        'w-full  pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm text-box-high',
-                        'transition-all duration-200 mass',
-                        'hover:border-bolt-elements-focus',
-                      )}
-                      onDragEnter={(e) => {
-                        e.preventDefault();
-                        e.currentTarget.style.border = '2px solid #1488fc';
+                    <svg className={classNames(styles.PromptEffectContainer)}>
+                      <defs>
+                        <linearGradient
+                          id="line-gradient"
+                          x1="500%"
+                          y1="0%"
+                          x2="-14%"
+                          y2="10%"
+                          gradientUnits="userSpaceOnUse"
+                          gradientTransform="rotate(-45)"
+                        >
+                          <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
+                          <stop offset="60%" stopColor="#b44aff" stopOpacity="80%"></stop>
+                          <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
+                          <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
+                        </linearGradient>
+                        <linearGradient id="shine-gradient">
+                          <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
+                          <stop offset="40%" stopColor="#ffffff" stopOpacity="80%"></stop>
+                          <stop offset="50%" stopColor="#ffffff" stopOpacity="80%"></stop>
+                          <stop offset="100%" stopColor="white" stopOpacity="0%"></stop>
+                        </linearGradient>
+                      </defs>
+                      <rect
+                        className={classNames(styles.PromptEffectLine)}
+                        pathLength="100"
+                        strokeLinecap="round"
+                      ></rect>
+                      <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
+                    </svg>
+                    <div className="relative top-12">
+                      <ClientOnly>
+                        {() => (
+                          <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
+                            <div className="relative z-0 -top-5">
+                              <ModelSelector
+                                key={provider?.name + ':' + modelList.length}
+                                model={model}
+                                setModel={setModel}
+                                modelList={modelList}
+                                provider={provider}
+                                setProvider={setProvider}
+                                providerList={providerList || (PROVIDER_LIST as ProviderInfo[])}
+                                apiKeys={apiKeys}
+                                modelLoading={isModelLoading}
+                              />
+                            </div>
+                            {(providerList || []).length > 0 && provider && (
+                              <div className="relative -top-4">
+                                <APIKeyManager
+                                  provider={provider}
+                                  apiKey={apiKeys[provider.name] || ''}
+                                  setApiKey={(key) => {
+                                    onApiKeysChange(provider.name, key);
+                                  }}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </ClientOnly>
+                    </div>
+                    <FilePreview
+                      files={uploadedFiles}
+                      imageDataList={imageDataList}
+                      onRemove={(index) => {
+                        setUploadedFiles?.(uploadedFiles.filter((_, i) => i !== index));
+                        setImageDataList?.(imageDataList.filter((_, i) => i !== index));
                       }}
-                      onDragOver={(e) => {
-                        e.preventDefault();
-                        e.currentTarget.style.border = '2px solid #1488fc';
-                      }}
-                      onDragLeave={(e) => {
-                        e.preventDefault();
-                        e.currentTarget.style.border = '1px solid var(--bolt-elements-borderColor)';
-                      }}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        e.currentTarget.style.border = '1px solid var(--bolt-elements-borderColor)';
-
-                        const files = Array.from(e.dataTransfer.files);
-                        files.forEach((file) => {
-                          if (file.type.startsWith('image/')) {
-                            const reader = new FileReader();
-
-                            reader.onload = (e) => {
-                              const base64Image = e.target?.result as string;
-                              setUploadedFiles?.([...uploadedFiles, file]);
-                              setImageDataList?.([...imageDataList, base64Image]);
-                            };
-                            reader.readAsDataURL(file);
-                          }
-                        });
-                      }}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                          if (event.shiftKey) {
-                            return;
-                          }
-
-                          event.preventDefault();
-
-                          if (isStreaming) {
-                            handleStop?.();
-                            return;
-                          }
-
-                          // ignore if using input method engine
-                          if (event.nativeEvent.isComposing) {
-                            return;
-                          }
-
-                          handleSendMessage?.(event);
-                        }
-                      }}
-                      value={input}
-                      onChange={(event) => {
-                        handleInputChange?.(event);
-                      }}
-                      onPaste={handlePaste}
-                      style={{
-                        minHeight: TEXTAREA_MIN_HEIGHT,
-                        maxHeight: TEXTAREA_MAX_HEIGHT,
-                      }}
-                      placeholder="How can Bolt help you today?"
-                      translate="no"
                     />
                     <ClientOnly>
                       {() => (
-                        <SendButton
-                          show={input.length > 0 || isStreaming || uploadedFiles.length > 0}
-                          isStreaming={isStreaming}
-                          disabled={!providerList || providerList.length === 0}
-                          onClick={(event) => {
+                        <ScreenshotStateManager
+                          setUploadedFiles={setUploadedFiles}
+                          setImageDataList={setImageDataList}
+                          uploadedFiles={uploadedFiles}
+                          imageDataList={imageDataList}
+                        />
+                      )}
+                    </ClientOnly>
+                    <div
+                      className={classNames(
+                        'relative top-20 shadow-xs w-full border --qbuildr-elements-borderRad backdrop-blur rounded-lg ',
+                      )}
+                    >
+                      <textarea
+                        ref={textareaRef}
+                        className={classNames(
+                          'w-full  pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm text-box-high',
+                          'transition-all duration-200 mass',
+                          'hover:border-bolt-elements-focus',
+                        )}
+                        onDragEnter={(e) => {
+                          e.preventDefault();
+                          e.currentTarget.style.border = '2px solid #1488fc';
+                        }}
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          e.currentTarget.style.border = '2px solid #1488fc';
+                        }}
+                        onDragLeave={(e) => {
+                          e.preventDefault();
+                          e.currentTarget.style.border = '1px solid var(--bolt-elements-borderColor)';
+                        }}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          e.currentTarget.style.border = '1px solid var(--bolt-elements-borderColor)';
+
+                          const files = Array.from(e.dataTransfer.files);
+                          files.forEach((file) => {
+                            if (file.type.startsWith('image/')) {
+                              const reader = new FileReader();
+
+                              reader.onload = (e) => {
+                                const base64Image = e.target?.result as string;
+                                setUploadedFiles?.([...uploadedFiles, file]);
+                                setImageDataList?.([...imageDataList, base64Image]);
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          });
+                        }}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter') {
+                            if (event.shiftKey) {
+                              return;
+                            }
+
+                            event.preventDefault();
+
                             if (isStreaming) {
                               handleStop?.();
                               return;
                             }
 
-                            if (input.length > 0 || uploadedFiles.length > 0) {
-                              handleSendMessage?.(event);
+                            // ignore if using input method engine
+                            if (event.nativeEvent.isComposing) {
+                              return;
                             }
-                          }}
-                        />
-                      )}
-                    </ClientOnly>
-                    <div className="flex justify-between items-center text-sm p-4 pt-2">
-                      <div className="flex gap-1 items-center">
-                        <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
-                          <div className="i-ph:paperclip text-xl"></div>
-                        </IconButton>
-                        <IconButton
-                          title="Enhance prompt"
-                          disabled={input.length === 0 || enhancingPrompt}
-                          className={classNames('transition-all', enhancingPrompt ? 'opacity-100' : '')}
-                          onClick={() => {
-                            enhancePrompt?.();
-                            toast.success('Prompt enhanced!');
-                          }}
-                        >
-                          {enhancingPrompt ? (
-                            <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
-                          ) : (
-                            <div className="i-bolt:stars text-xl"></div>
-                          )}
-                        </IconButton>
 
-                        <SpeechRecognitionButton
-                          isListening={isListening}
-                          onStart={startListening}
-                          onStop={stopListening}
-                          disabled={isStreaming}
-                        />
-                        {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
-                        <IconButton
-                          title="Model Settings"
-                          className={classNames('transition-all flex items-center gap-1', {
-                            'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent':
-                              isModelSettingsCollapsed,
-                            'bg-bolt-elements-item-backgroundDefault text-bolt-elements-item-contentDefault':
-                              !isModelSettingsCollapsed,
-                          })}
-                          onClick={() => setIsModelSettingsCollapsed(!isModelSettingsCollapsed)}
-                          disabled={!providerList || providerList.length === 0}
-                        >
-                          <div className={`i-ph:caret-${isModelSettingsCollapsed ? 'right' : 'down'} text-lg`} />
-                          {isModelSettingsCollapsed ? <span className="text-xs">{model}</span> : <span />}
-                        </IconButton>
-                      </div>
-                      {input.length > 3 ? (
-                        <div className="text-xs text-bolt-elements-textTertiary">
-                          Use <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Shift</kbd>{' '}
-                          + <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Return</kbd>{' '}
-                          a new line
+                            handleSendMessage?.(event);
+                          }
+                        }}
+                        value={input}
+                        onChange={(event) => {
+                          handleInputChange?.(event);
+                        }}
+                        onPaste={handlePaste}
+                        style={{
+                          minHeight: TEXTAREA_MIN_HEIGHT,
+                          maxHeight: TEXTAREA_MAX_HEIGHT,
+                        }}
+                        placeholder="How can Bolt help you today?"
+                        translate="no"
+                      />
+                      <ClientOnly>
+                        {() => (
+                          <SendButton
+                            show={input.length > 0 || isStreaming || uploadedFiles.length > 0}
+                            isStreaming={isStreaming}
+                            disabled={!providerList || providerList.length === 0}
+                            onClick={(event) => {
+                              if (isStreaming) {
+                                handleStop?.();
+                                return;
+                              }
+
+                              if (input.length > 0 || uploadedFiles.length > 0) {
+                                handleSendMessage?.(event);
+                              }
+                            }}
+                          />
+                        )}
+                      </ClientOnly>
+                      <div className="flex justify-between items-center text-sm p-4 pt-2">
+                        <div className="flex gap-1 items-center">
+                          <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
+                            <div className="i-ph:paperclip text-xl"></div>
+                          </IconButton>
+                          <IconButton
+                            title="Enhance prompt"
+                            disabled={input.length === 0 || enhancingPrompt}
+                            className={classNames('transition-all', enhancingPrompt ? 'opacity-100' : '')}
+                            onClick={() => {
+                              enhancePrompt?.();
+                              toast.success('Prompt enhanced!');
+                            }}
+                          >
+                            {enhancingPrompt ? (
+                              <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
+                            ) : (
+                              <div className="i-bolt:stars text-xl"></div>
+                            )}
+                          </IconButton>
+
+                          <SpeechRecognitionButton
+                            isListening={isListening}
+                            onStart={startListening}
+                            onStop={stopListening}
+                            disabled={isStreaming}
+                          />
+                          {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
+                          <IconButton
+                            title="Model Settings"
+                            className={classNames('transition-all flex items-center gap-1', {
+                              'bg-bolt-elements-item-backgroundAccent text-bolt-elements-item-contentAccent':
+                                isModelSettingsCollapsed,
+                              'bg-bolt-elements-item-backgroundDefault text-bolt-elements-item-contentDefault':
+                                !isModelSettingsCollapsed,
+                            })}
+                            onClick={() => setIsModelSettingsCollapsed(!isModelSettingsCollapsed)}
+                            disabled={!providerList || providerList.length === 0}
+                          >
+                            <div className={`i-ph:caret-${isModelSettingsCollapsed ? 'right' : 'down'} text-lg`} />
+                            {isModelSettingsCollapsed ? <span className="text-xs">{model}</span> : <span />}
+                          </IconButton>
                         </div>
-                      ) : null}
+                        {input.length > 3 ? (
+                          <div className="text-xs text-bolt-elements-textTertiary text-white">
+                            Use{' '}
+                            <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Shift</kbd> +{' '}
+                            <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Return</kbd>{' '}
+                            a new line
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="flex flex-col justify-center gap-5">
-              {!chatStarted && (
-                <div className="flex justify-center gap-2">
-                  {ImportButtons(importChat)}
-                  <GitCloneButton importChat={importChat} />
-                </div>
-              )}
-              {!chatStarted &&
-                ExamplePrompts((event, messageInput) => {
-                  if (isStreaming) {
-                    handleStop?.();
-                    return;
-                  }
+              <div className="flex flex-col justify-center gap-5">
+                {!chatStarted && (
+                  <div className="flex justify-center gap-2">
+                    {ImportButtons(importChat)}
+                    <GitCloneButton importChat={importChat} />
+                  </div>
+                )}
+                {!chatStarted &&
+                  ExamplePrompts((event, messageInput) => {
+                    if (isStreaming) {
+                      handleStop?.();
+                      return;
+                    }
 
-                  handleSendMessage?.(event, messageInput);
-                })}
-              {!chatStarted && <StarterTemplates />}
+                    handleSendMessage?.(event, messageInput);
+                  })}
+                {!chatStarted && <StarterTemplates />}
+              </div>
             </div>
+            <ClientOnly>{() => <Workbench chatStarted={chatStarted} isStreaming={isStreaming} />}</ClientOnly>
           </div>
-          <ClientOnly>{() => <Workbench chatStarted={chatStarted} isStreaming={isStreaming} />}</ClientOnly>
         </div>
-      </div>
       </div>
     );
 

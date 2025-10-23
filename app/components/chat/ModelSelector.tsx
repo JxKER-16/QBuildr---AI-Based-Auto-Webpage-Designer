@@ -65,7 +65,9 @@ export const ModelSelector = ({
               if (setProvider) {
                 setProvider(providerOption);
               }
+
               const firstModel = modelList.find((m) => m.provider === providerOption.name);
+
               if (firstModel && setModel) {
                 setModel(firstModel.name);
               }
@@ -80,7 +82,7 @@ export const ModelSelector = ({
           </button>
         ))}
       </div>
-      
+
       <div className="flex gap-2 flex-wrap">
         {modelLoading === 'all' || modelLoading === provider?.name ? (
           <div className="relative left-25 mt-6 px-4 py-2 rounded-lg border border-qbuildr-elements-borderColor bg-qbuildr-elements-prompt-background text-qbuildr-elements-textPrimary">

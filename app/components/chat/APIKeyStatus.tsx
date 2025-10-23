@@ -168,15 +168,12 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
   );
 };
 
-export function APIKeyStatus() {
+export function ApiKeyStatus() {
   return (
     <div className="flex items-center gap-2 mb-4 text-white">
       <span>API Key:</span>
       <span className="text-green-400">✓ Set via environment variable</span>
-      <a 
-        href="#" 
-        className="text-indigo-400 hover:text-indigo-300 underline ml-auto"
-      >
+      <a href="#" className="text-indigo-400 hover:text-indigo-300 underline ml-auto">
         Get API Key
       </a>
     </div>

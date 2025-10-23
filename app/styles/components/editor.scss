@@ -6,7 +6,10 @@
 
   --cm-gutter-backgroundColor: var(--qbuildr-elements-editor-gutter-backgroundColor, var(--cm-backgroundColor));
   --cm-gutter-textColor: var(--qbuildr-elements-editor-gutter-textColor, var(--qbuildr-elements-textSecondary));
-  --cm-gutter-activeLineTextColor: var(--qbuildr-elements-editor-gutter-activeLineTextColor, var(--cm-gutter-textColor));
+  --cm-gutter-activeLineTextColor: var(
+    --qbuildr-elements-editor-gutter-activeLineTextColor,
+    var(--cm-gutter-textColor)
+  );
 
   /* Fold Gutter */
 
@@ -41,7 +44,10 @@
 
   --cm-search-backgroundColor: var(--qbuildr-elements-editor-search-backgroundColor, var(--cm-backgroundColor));
   --cm-search-textColor: var(--qbuildr-elements-editor-search-textColor, var(--qbuildr-elements-textSecondary));
-  --cm-search-closeButton-backgroundColor: var(--qbuildr-elements-editor-search-closeButton-backgroundColor, transparent);
+  --cm-search-closeButton-backgroundColor: var(
+    --qbuildr-elements-editor-search-closeButton-backgroundColor,
+    transparent
+  );
 
   --cm-search-closeButton-backgroundColorHover: var(
     --qbuildr-elements-editor-search-closeButton-backgroundColorHover,
@@ -68,7 +74,10 @@
     var(--qbuildr-elements-item-backgroundActive)
   );
 
-  --cm-search-button-textColor: var(--qbuildr-elements-editor-search-button-textColor, var(--qbuildr-elements-textSecondary));
+  --cm-search-button-textColor: var(
+    --qbuildr-elements-editor-search-button-textColor,
+    var(--qbuildr-elements-textSecondary)
+  );
 
   --cm-search-button-textColorHover: var(
     --qbuildr-elements-editor-search-button-textColorHover,
@@ -84,8 +93,14 @@
   );
 
   --cm-search-input-backgroundColor: var(--qbuildr-elements-editor-search-input-backgroundColor, transparent);
-  --cm-search-input-textColor: var(--qbuildr-elements-editor-search-input-textColor, var(--qbuildr-elements-textPrimary));
-  --cm-search-input-borderColor: var(--qbuildr-elements-editor-search-input-borderColor, var(--qbuildr-elements-borderColor));
+  --cm-search-input-textColor: var(
+    --qbuildr-elements-editor-search-input-textColor,
+    var(--qbuildr-elements-textPrimary)
+  );
+  --cm-search-input-borderColor: var(
+    --qbuildr-elements-editor-search-input-borderColor,
+    var(--qbuildr-elements-borderColor)
+  );
 
   --cm-search-input-borderColorFocused: var(
     --qbuildr-elements-editor-search-input-borderColorFocused,

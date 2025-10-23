@@ -116,7 +116,8 @@ export const TerminalTabs = memo(() => {
                         className={classNames(
                           'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                           {
-                            'bg-qbuildr-elements-terminals-buttonBackground text-qbuildr-elements-textPrimary': isActive,
+                            'bg-qbuildr-elements-terminals-buttonBackground text-qbuildr-elements-textPrimary':
+                              isActive,
                             'bg-qbuildr-elements-background-depth-2 text-qbuildr-elements-textSecondary hover:bg-qbuildr-elements-terminals-buttonBackground':
                               !isActive,
                           },
